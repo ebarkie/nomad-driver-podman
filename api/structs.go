@@ -1514,3 +1514,14 @@ type Version struct {
 	Built      int64
 	OsArch     string
 }
+
+// taken from https://github.com/containers/podman/blob/master/libpod/define.annotations.go
+
+const (
+	// InspectAnnotationLabel is used by Inspect to identify containers with
+	// special SELinux-related settings. It is used to populate the output
+	// of the SecurityOpt setting.
+	// If an annotation with this key is found in the OCI spec, it will be
+	// used in the output of Inspect().
+	InspectAnnotationLabel = "io.podman.annotations.label"
+)

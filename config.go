@@ -56,6 +56,7 @@ var (
 		"network_mode":       hclspec.NewAttr("network_mode", "string", false),
 		"port_map":           hclspec.NewAttr("port_map", "list(map(number))", false),
 		"ports":              hclspec.NewAttr("ports", "list(string)", false),
+		"selinux_opts":       hclspec.NewAttr("selinux_opts", "list(string)", false),
 		"tmpfs":              hclspec.NewAttr("tmpfs", "list(string)", false),
 		"volumes":            hclspec.NewAttr("volumes", "list(string)", false),
 	})
@@ -96,6 +97,7 @@ type TaskConfig struct {
 	MemorySwappiness  int64              `codec:"memory_swappiness"`
 	PortMap           hclutils.MapStrInt `codec:"port_map"`
 	Ports             []string           `codec:"ports"`
+	SelinuxOpts       []string           `codec:"selinux_opts"`
 	Tmpfs             []string           `codec:"tmpfs"`
 	Volumes           []string           `codec:"volumes"`
 	CapAdd            []string           `codec:"cap_add"`

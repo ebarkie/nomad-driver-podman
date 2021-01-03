@@ -1254,6 +1254,18 @@ func TestPodmanDriver_NetworkMode(t *testing.T) {
 	}
 }
 
+// check security options
+func TestPodmanDriver_SecurityOpt(t *testing.T) {
+	taskCfg := newTaskConfig("", busyboxLongRunningCmd)
+	// 	selinux_opts = ["disable"]
+	taskCfg.SelinuxOpts = []string{"disable"}
+
+	inspectData := startDestroyInspect(t, taskCfg, "securityopt")
+
+	// we disabled selinux labels so security options should indicate it
+	require.Equal(t, inspectData.HostConfig.SecurityOpt, []string{"label=disable"})
+}
+
 // test kill / signal support
 func TestPodmanDriver_SignalTask(t *testing.T) {
 	if !tu.IsCI() {

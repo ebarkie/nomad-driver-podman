@@ -411,6 +411,11 @@ func (d *Driver) StartTask(cfg *drivers.TaskConfig) (*drivers.TaskHandle, *drive
 	// Security config options
 	createOpts.ContainerSecurityConfig.CapAdd = driverConfig.CapAdd
 	createOpts.ContainerSecurityConfig.CapDrop = driverConfig.CapDrop
+	createOpts.ContainerSecurityConfig.SelinuxOpts = driverConfig.SelinuxOpts
+	if len(createOpts.ContainerSecurityConfig.SelinuxOpts) > 0 {
+		createOpts.Annotations = make(map[string]string)
+		createOpts.Annotations[api.InspectAnnotationLabel] = strings.Join(createOpts.ContainerSecurityConfig.SelinuxOpts, ",label=")
+	}
 	createOpts.ContainerSecurityConfig.User = cfg.User
 
 	// Network config options
