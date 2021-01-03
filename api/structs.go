@@ -1515,7 +1515,7 @@ type Version struct {
 	OsArch     string
 }
 
-// taken from https://github.com/containers/podman/blob/master/libpod/define.annotations.go
+// taken from https://github.com/containers/podman/blob/master/libpod/define/annotations.go
 
 const (
 	// InspectAnnotationLabel is used by Inspect to identify containers with
