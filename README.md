@@ -277,6 +277,14 @@ config {
 }
 ```
 
+* **selinux_opts** - (Optional)  A list of SELinux options.  This is equivalent to --security-opt label= values.
+
+```
+config {
+  selinux_opts = ["disable"]
+}
+```
+
 ## Example job
 
 ```
